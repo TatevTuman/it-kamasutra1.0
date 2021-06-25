@@ -8,11 +8,6 @@ import Music from "./Components/Music/Music";
 import News from "./Components/News/News";
 import GeneralPage from "./Components/GeneralPage/GeneralPage";
 
-
-
-
-
-
 function App(props) {
     return (
         <BrowserRouter>
@@ -24,10 +19,10 @@ function App(props) {
                     <Route exact path="/profile" render={()=><Profile
                         state={props.state.profilePage.MyPostData}
                         dispatch={props.dispatch}
-                        newPostText={props.newPostText}  />}/>
+                        newPostText={props.state.profilePage.newPostText }  />}/>
 
                     <Route exact path="/dialogs" render={()=><Dialogs state={props.state}
-                                                                      newMessageText={props.newMessageText}
+                                                                      newMessageText={props.state.messagePage.newMessageText}
                                                                       dispatch={props.dispatch}
 
                     />}/>
@@ -40,5 +35,4 @@ function App(props) {
 }
 
 export default App;
-
 

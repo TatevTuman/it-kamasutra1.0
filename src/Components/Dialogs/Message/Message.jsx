@@ -1,6 +1,7 @@
+
 import React, {createRef} from "react";
 import {Button} from "react-bootstrap";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/State";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/reducerMessage";
 
 
 const Message = (props) => {

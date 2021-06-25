@@ -1,3 +1,4 @@
+
 import s from "./ProfileInfo.module.css"
 import {Col, Container, Row} from "react-bootstrap";
 
@@ -25,4 +26,3 @@ const ProfileInfo = () => {
 }
 
 export default ProfileInfo;
-

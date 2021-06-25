@@ -1,3 +1,4 @@
+
 import {Col, Container, Row} from "react-bootstrap";
 import Companion from "./Companion/Companion";
 import Message from "./Message/Message";
@@ -20,7 +21,3 @@ const Dialogs = (props) => {
     )
 }
 export default Dialogs;
-
-
-
-

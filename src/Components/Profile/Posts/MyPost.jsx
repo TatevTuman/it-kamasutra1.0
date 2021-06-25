@@ -1,6 +1,7 @@
+
 import {Button, Form} from "react-bootstrap";
 import React, {createRef} from "react";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/State";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/reducerProfile";
 
 
 

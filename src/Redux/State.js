@@ -41,7 +41,6 @@ let store = {
                 like: "0",
                 id: "3"
             }
-
             this._state.MyPostData.push(newPost)
             this._state.newPostText = "";
             this._renderEntireTree(this._state);
@@ -59,8 +58,6 @@ let store = {
             this._state.MessageData.push(newMassage)
             this._state.newMassageText = "";
             this._renderEntireTree(this._state)
-
-
         },*/
     /*    updateNewMassageTest(massageText) {
             this._state.newMassageText = massageText;
@@ -82,11 +79,9 @@ let store = {
                 this._state.MyPostData.push(newPost)
                 this._state.newPostText = "";
                 this._renderEntireTree(this._state);
-
         }else if(action.type=== types.UPDATE_NEW_POST_TEXT ){
             this._state.newPostText = action.textValue;
             this._renderEntireTree(this._state);
-
         }else if(action.type=== types.ADD_MESSAGE){
             let newMessage = {
                 id: "4",
@@ -111,7 +106,7 @@ let store = {
 
 }
 
-export const addPostActionCreator = () => {
+/*export const addPostActionCreator = () => {
     return {type: types.ADD_POST}
 }
 export const updateNewPostTextActionCreator = (textValue) => {
@@ -122,6 +117,5 @@ export const addMessageActionCreator = () => {
 }
 export const updateNewMessageTextActionCreator = (textValue) => {
     return {type: types.UPDATE_NEW_MESSAGE_TEXT, textValue}
-}
+}*/
 
-export default store;

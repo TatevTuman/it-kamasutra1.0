@@ -1,4 +1,5 @@
 
+
 import MyPost from "./Posts/MyPost";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import s from "./Profile.module.css"
@@ -13,17 +14,17 @@ const Profile = (props) => {
                 <Row xs={3}>
                     <Col className={s.profileInfo}> <ProfileInfo/></Col>
                 </Row>  <Row xs={3}>
-                    <Col className={s.profileInfo2}><MyPost state={props.state}
-                                                            dispatch={props.dispatch}
-                                                            /*addPost={props.addPost}*/
-                                                           /* updateNewPostTest={props.updateNewPostTest}*/
-                                                            newPostText={props.newPostText} /></Col>
-                </Row>
+                <Col className={s.profileInfo2}><MyPost state={props.state}
+                                                        dispatch={props.dispatch}
+                    /*addPost={props.addPost}*/
+                    /* updateNewPostTest={props.updateNewPostTest}*/
+                                                        newPostText={props.newPostText} /></Col>
+            </Row>
 
 
             </Container>
         </div>
-     )
+    )
 }
 
 export default Profile;

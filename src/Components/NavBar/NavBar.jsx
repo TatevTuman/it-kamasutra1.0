@@ -22,26 +22,14 @@ const NavBar = () => {
                     <span><NavLink to="/friend">Friends</NavLink></span>
                     <span><NavLink to="/news">News</NavLink></span>
                 </Col>
-
             </Row>
-
         </Container>
-
-
     )
 }
 
 export default NavBar;
 
 
-{/*
-
-        <span><NavLink to="/profile">Profile</NavLink></span>
-        <span><NavLink to="/dialogs">Message</NavLink></span>
-        <span><NavLink to="/music">Music</NavLink></span>
-        <span><NavLink to="/news">News</NavLink></span>
-*/
-}
 
 
 

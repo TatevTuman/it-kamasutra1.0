@@ -1,7 +1,7 @@
 
 import {Col, Container, Row} from "react-bootstrap";
 import Companion from "./Companion/Companion";
-import Message from "./Message/Message";
+import MessageContainer from "./Message/MessageContainer";
 
 
 
@@ -11,7 +11,7 @@ const Dialogs = (props) => {
         <Container>
             <Row>
                 <Col><Companion state={props.state.messagePage.CompanionData}/></Col>
-                <Col><Message state={props.state.messagePage.MessageData}
+                <Col><MessageContainer state={props.state.messagePage.MessageData}
                               newMessageText={props.newMessageText}
                               dispatch={props.dispatch}
 

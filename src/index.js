@@ -9,8 +9,6 @@ import store from "./Redux/redux-store";
 
 
 const renderEntireTree = (state) => {
-    console.log(store)
-    console.log(state)
     ReactDOM.render(
         <React.StrictMode>
             <App state={state}

@@ -1,7 +1,6 @@
 
 import React, {createRef} from "react";
 import {Button} from "react-bootstrap";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/reducerMessage";
 
 
 const Message = (props) => {
@@ -16,13 +15,13 @@ const Message = (props) => {
 
 
     let addMessageUI = () => {
-        props.dispatch(addMessageActionCreator())
+        props.addMessageUI()
 
     }
 
     let onMessageChange = () => {
         let textValue = textMessage.current.value;
-        props.dispatch(updateNewMessageTextActionCreator(textValue))
+        props.onMessageChange(textValue);
 
     }
 

@@ -1,7 +1,7 @@
 
 import {Button, Form} from "react-bootstrap";
 import React, {createRef} from "react";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/reducerProfile";
+
 
 
 
@@ -22,12 +22,12 @@ const MyPost = (props) => {
     let postText = createRef()
 
     let addPostUl = () => {
-        props.dispatch(addPostActionCreator());
+        props.addPostUl();
     }
 
     const onPostChange=()=>{
         let textValue = postText.current.value
-        props.dispatch(updateNewPostTextActionCreator(textValue))
+        props.onPostChange(textValue);
     }
 
 

@@ -1,9 +1,8 @@
 
-
-import MyPost from "./Posts/MyPost";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import s from "./Profile.module.css"
 import {Col, Container, Row} from "react-bootstrap";
+import MyPostContainer from "./Posts/MyPostContainer";
 
 
 const Profile = (props) => {
@@ -14,10 +13,8 @@ const Profile = (props) => {
                 <Row xs={3}>
                     <Col className={s.profileInfo}> <ProfileInfo/></Col>
                 </Row>  <Row xs={3}>
-                <Col className={s.profileInfo2}><MyPost state={props.state}
+                <Col className={s.profileInfo2}><MyPostContainer state={props.state}
                                                         dispatch={props.dispatch}
-                    /*addPost={props.addPost}*/
-                    /* updateNewPostTest={props.updateNewPostTest}*/
                                                         newPostText={props.newPostText} /></Col>
             </Row>
 

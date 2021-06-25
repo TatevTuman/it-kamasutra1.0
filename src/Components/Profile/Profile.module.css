@@ -1,0 +1,21 @@
+
+.body{
+    background-color: #7cd5fc;
+}
+.profileInfo{
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    margin-top: 50px !important;
+
+}.profileInfo2{
+    border-radius: 10px;
+    padding-top: 5px;
+    margin-bottom: 50px;
+    background-color: white;
+    margin-top: 50px !important;
+
+}
+
+

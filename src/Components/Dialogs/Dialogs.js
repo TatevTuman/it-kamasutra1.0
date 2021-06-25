@@ -9,8 +9,12 @@ const Dialogs = (props) => {
     return (
         <Container>
             <Row>
-                <Col><Companion state={props.state.CompanionData}/></Col>
-                <Col><Message state={props.state.MessageData} /></Col>
+                <Col><Companion state={props.state.messagePage.CompanionData}/></Col>
+                <Col><Message state={props.state.messagePage.MessageData}
+                              newMessageText={props.newMessageText}
+                              dispatch={props.dispatch}
+
+                /></Col>
             </Row>
         </Container>
     )

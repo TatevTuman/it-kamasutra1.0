@@ -1,5 +1,6 @@
 import React, {createRef} from "react";
 import {Button} from "react-bootstrap";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../Redux/State";
 
 
 const Message = (props) => {
@@ -11,16 +12,24 @@ const Message = (props) => {
     )
 
     let textMessage = createRef();
-    let addMessage = () => {
-        let text = textMessage.current.value
-        alert(text)
+
+
+    let addMessageUI = () => {
+        props.dispatch(addMessageActionCreator())
+
+    }
+
+    let onMessageChange = () => {
+        let textValue = textMessage.current.value;
+        props.dispatch(updateNewMessageTextActionCreator(textValue))
+
     }
 
     return (
         <div>
             <div>{messageJSX}</div>
-            <div><textarea ref={textMessage}/></div>
-            <div><Button onClick={addMessage}>Send</Button></div>
+            <div><textarea ref={textMessage} onChange={onMessageChange} value={props.newMessageText}/></div>
+            <div><Button onClick={addMessageUI}>Send</Button></div>
 
 
         </div>

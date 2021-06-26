@@ -1,6 +1,6 @@
 import types from "./actions";
 
-let initialState={
+let initialState = {
     MyPostData: [
         {title: "Post1", like: "15", id: "1"},
         {title: "Post2", like: "20", id: "2"},
@@ -9,22 +9,37 @@ let initialState={
 }
 
 
-const reducerProfile = (state=initialState, action) => {
+const reducerProfile = (state = initialState, action) => {
+/*    let stateCopy = {
+        ...state,
+        MyPostData: [...state.MyPostData]
+    };*/
 
     switch (action.type) {
         case types.ADD_POST:
-            let newPost = {
+    /*        let newPost = {
                 title: state.newPostText,
                 like: "0",
                 id: "3"
             }
-            state.MyPostData.push(newPost)
-            state.newPostText = "";
-            return state;
+            stateCopy.MyPostData = [...state.MyPostData]
+            stateCopy.MyPostData.push(newPost)
+            stateCopy.newPostText = "";
+            return stateCopy;*/
+            return {
+                ...state,
+                newPostText: "",
+                MyPostData:[...state.MyPostData,{id:3, like:7, title: state.newPostText}]
+            }
+
 
         case types.UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.textValue;
-            return state;
+         /*   stateCopy.newPostText = action.textValue;
+            return stateCopy;*/
+            return {
+                ...state,
+                newPostText: action.textValue
+            }
 
         default:
             return state;

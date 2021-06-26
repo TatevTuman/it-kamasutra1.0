@@ -1,6 +1,6 @@
 import types from "./actions";
 
-let initialState={
+let initialState = {
     CompanionData: [
         {id: "1", name: "Bob"},
         {id: "2", name: "Masha"},
@@ -16,19 +16,35 @@ let initialState={
     newMessageText: "Your message . . .",
 }
 
-const reducerMessagePage = (state=initialState, action) => {
+const reducerMessagePage = (state = initialState, action) => {
+ /*   let stateCopy = {
+        ...state,
+        MessageData: [...state.MessageData]
+    }*/
+
     switch (action.type) {
         case types.ADD_MESSAGE:
-            let newMessage = {
+/*            let newMessage = {
                 id: "4",
-                title: state.newMessageText,
+                title: stateCopy.newMessageText,
             }
-            state.MessageData.push(newMessage)
-            state.newMessageText = "";
-            return state;
+            stateCopy.MessageData.push(newMessage)
+            stateCopy.newMessageText = "";
+
+            return stateCopy;*/
+            return {
+                ...state,
+                newMessageText: "",
+                MessageData:[...state.MessageData, {id:5,title:state.newMessageText }]
+            }
+
         case types.UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.textValue;
-            return state;
+      /*      stateCopy.newMessageText = action.textValue;
+            return stateCopy;*/
+            return {
+                ...state,
+                newMessageText: action.textValue,
+            }
 
         default:
             return state;

@@ -13,9 +13,12 @@ const Profile = (props) => {
                 <Row xs={3}>
                     <Col className={s.profileInfo}> <ProfileInfo/></Col>
                 </Row>  <Row xs={3}>
-                <Col className={s.profileInfo2}><MyPostContainer state={props.state}
-                                                        dispatch={props.dispatch}
-                                                        newPostText={props.newPostText} /></Col>
+                <Col className={s.profileInfo2}><MyPostContainer
+                 /*   state={props.state}
+                    dispatch={props.dispatch}
+                    newPostText={props.newPostText}*/
+
+                /></Col>
             </Row>
 
 

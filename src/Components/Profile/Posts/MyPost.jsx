@@ -11,7 +11,7 @@ const MyPost = (props) => {
 
 
 
-    let postJSX = props.state.map((post) =>
+    let postJSX = props.MyPostData.map((post) =>
         <div key={post.id}>
             <div>{post.title} </div>
             <div> Like: {post.like}</div>

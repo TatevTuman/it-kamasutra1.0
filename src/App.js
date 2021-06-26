@@ -17,13 +17,15 @@ function App(props) {
                 <div className="App-content">
                     <Route exact path="/" render={()=><GeneralPage />}/>
                     <Route exact path="/profile" render={()=><Profile
-                        state={props.state.profilePage.MyPostData}
-                        dispatch={props.dispatch}
-                        newPostText={props.state.profilePage.newPostText }  />}/>
+                        //state={props.state.profilePage.MyPostData}
+                        //dispatch={props.dispatch}
+                        //newPostText={props.state.profilePage.newPostText }
+                    />}/>
 
-                    <Route exact path="/dialogs" render={()=><Dialogs state={props.state}
-                                                                      newMessageText={props.state.messagePage.newMessageText}
-                                                                      dispatch={props.dispatch}
+                    <Route exact path="/dialogs" render={()=><Dialogs
+                    /*    state={props.state}
+                        newMessageText={props.state.messagePage.newMessageText}
+                        dispatch={props.dispatch}*/
 
                     />}/>
                     <Route exact path="/music" render={()=><Music/>}/>

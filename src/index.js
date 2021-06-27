@@ -11,15 +11,7 @@ import {Provider} from "react-redux";
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-
-            <App
-
-                /*  state={state}
-                   dispatch={store.dispatch.bind(store)}*/
-                /*      newPostText={store._state.profilePage.newPostText}
-                      newMessageText={store._state.messagePage.newMessageText}*/
-                /*   store={store}*/
-            />
+            <App/>
         </Provider>
 
     </React.StrictMode>,

@@ -7,8 +7,9 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Music from "./Components/Music/Music";
 import News from "./Components/News/News";
 import GeneralPage from "./Components/GeneralPage/GeneralPage";
+import FriendsContainer from "./Components/Friends/FriendsContainer";
 
-function App(props) {
+function App() {
     return (
         <BrowserRouter>
             <div className="App">
@@ -16,18 +17,9 @@ function App(props) {
 
                 <div className="App-content">
                     <Route exact path="/" render={()=><GeneralPage />}/>
-                    <Route exact path="/profile" render={()=><Profile
-                        //state={props.state.profilePage.MyPostData}
-                        //dispatch={props.dispatch}
-                        //newPostText={props.state.profilePage.newPostText }
-                    />}/>
-
-                    <Route exact path="/dialogs" render={()=><Dialogs
-                    /*    state={props.state}
-                        newMessageText={props.state.messagePage.newMessageText}
-                        dispatch={props.dispatch}*/
-
-                    />}/>
+                    <Route exact path="/profile" render={()=><Profile/>}/>
+                    <Route exact path="/dialogs" render={()=><Dialogs/>}/>
+                    <Route exact path="/friends" render={()=><FriendsContainer/>}/>
                     <Route exact path="/music" render={()=><Music/>}/>
                     <Route exact path="/news" render={()=><News/>}/>
                 </div>

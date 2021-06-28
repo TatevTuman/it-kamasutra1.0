@@ -3,25 +3,10 @@ import {Button, Col, Container, Row} from "react-bootstrap";
 import s from "./Friends.module.css";
 import * as axios from "axios";
 
-class FriendsClass extends React.Component {
+const FriendsClass=(props)=>  {
 
 
-    componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
-            this.props.setUser(response.data.items);
-            this.props.setTotalUsersCount(response.data.totalCount)
-        });
-    }
-
-    onPageChanged=(pageNumber)=>{
-        this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
-            this.props.setUser(response.data.items);
-        });
-    }
-    render() {
-
-        let friendsJSX = this.props.state.map(friend =>
+        let friendsJSX = props.state.map(friend =>
             <Container key={friend.id}>
                 <Row>
                     <Col>
@@ -57,7 +42,7 @@ class FriendsClass extends React.Component {
             </Container>
         )
 
-        let pageCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+        let pageCount = Math.ceil(props.totalUsersCount /props.pageSize);
 
         let pages = [];
 
@@ -67,7 +52,7 @@ class FriendsClass extends React.Component {
 
         let pagesJSX = pages.map((page) =>
             <span key={page.id}>
-                <span onClick={()=>{this.onPageChanged(page)}} className={this.props.currentPage===page && s.selectedPage}>{page} </span>
+                <span onClick={()=>{props.onPageChanged(page)}} className={props.currentPage===page && s.selectedPage}>{page} </span>
             </span>
         )
 
@@ -79,7 +64,7 @@ class FriendsClass extends React.Component {
                 {friendsJSX}
             </div>
         )
-    }
+
 
 }
 

@@ -3,7 +3,7 @@ import types from "./actions";
 let initialState = {
 
     FriendsData: [
-          /*      {
+ /*               {
                     id: 1,
                     photo: "https://inlnk.ru/r7peZ",
                     name: "Toma",
@@ -28,7 +28,7 @@ let initialState = {
                     followed: true
                 },*/
     ],
-    pageSize: 100,
+    pageSize: 7,
     totalUsersCount: 0,
     currentPage: 1
 }

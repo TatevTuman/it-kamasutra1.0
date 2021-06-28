@@ -4,36 +4,46 @@ import {
     followActionCreator,
     unfollowActionCreator,
     setUsersActionCreator,
-    setCurrentPageActionCreator, setTotalUsersCountActionCreator
+    setCurrentPageActionCreator, setTotalUsersCountActionCreator, isLoadingCountActionCreator
 } from "../../Redux/reducerFriends";
-import FriendsClass from "./FriendsClass";
+import Friends from "./Friends";
 import * as axios from "axios";
+import Spiner from "../Spiner/Spiner";
 
 
-class FriendsContainerAPI extends React.Component{
+class FriendsContainerAPI extends React.Component {
 
     componentDidMount() {
+
+        this.props.isToggleLoading(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.setUser(response.data.items);
             this.props.setTotalUsersCount(response.data.totalCount)
+            this.props.isToggleLoading(false)
         });
     }
 
-    onPageChanged=(pageNumber)=>{
+    onPageChanged = (pageNumber) => {
+        this.props.isToggleLoading(true)
         this.props.setCurrentPage(pageNumber)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
             this.props.setUser(response.data.items);
+            this.props.isToggleLoading(false)
         });
     }
-    render() {
-        return(
-            <div><FriendsClass onPageChanged={this.onPageChanged}
-                               totalUsersCount={this.props.totalUsersCount}
-                               pageSize={this.props.pageSize}
-                               currentPage={this.props.currentPage}
-                               state={this.props.state}
 
-            /></div>
+    render() {
+        return (
+            <div>
+                {this.props.isLoading ? <Spiner/> : <Friends onPageChanged={this.onPageChanged}
+                                                             totalUsersCount={this.props.totalUsersCount}
+                                                             pageSize={this.props.pageSize}
+                                                             currentPage={this.props.currentPage}
+                                                             state={this.props.state}
+
+                />}
+
+            </div>
         )
     }
 
@@ -47,6 +57,7 @@ const mapStateToProps = (state) => {
         pageSize: state.friendsPage.pageSize,
         totalUsersCount: state.friendsPage.totalUsersCount,
         currentPage: state.friendsPage.currentPage,
+        isLoading: state.friendsPage.isLoading,
 
     }
 };
@@ -62,11 +73,14 @@ const mapDispatchToProps = (dispatch) => {
         setUser: (users) => {
             dispatch(setUsersActionCreator(users));
         },
-        setCurrentPage:(currentPage)=>{
+        setCurrentPage: (currentPage) => {
             dispatch(setCurrentPageActionCreator(currentPage));
         },
-        setTotalUsersCount:(totalUsersCount)=>{
+        setTotalUsersCount: (totalUsersCount) => {
             dispatch(setTotalUsersCountActionCreator(totalUsersCount))
+        },
+        isToggleLoading: (isFetching) => {
+            dispatch(isLoadingCountActionCreator(isFetching))
         }
     }
 }

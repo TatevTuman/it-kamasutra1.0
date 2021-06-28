@@ -1,5 +1,6 @@
 import types from "./actions";
 
+
 let initialState = {
 
     FriendsData: [
@@ -30,7 +31,8 @@ let initialState = {
     ],
     pageSize: 7,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isLoading:false,
 }
 
 
@@ -73,8 +75,14 @@ const reducerFriends = (state = initialState, action) => {
             return {
                 ...state,
                 totalUsersCount:action.totalUsersCount
-
             }
+
+        case types.TOGGLE_LOADING :
+        return {
+            ...state,
+            isLoading: action.isFetching
+        }
+
         default:
             return state;
     }
@@ -99,6 +107,10 @@ export const setCurrentPageActionCreator = (currentPage) => {
 
 export const setTotalUsersCountActionCreator = (totalUsersCount) => {
     return {type: types.SET_TOTAL_USERS_COUNT, totalUsersCount}
+}
+
+export const isLoadingCountActionCreator = (isFetching) => {
+    return {type: types.TOGGLE_LOADING, isFetching}
 }
 
 

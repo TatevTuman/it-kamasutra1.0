@@ -29,7 +29,7 @@ let initialState = {
                     followed: true
                 },*/
     ],
-    pageSize: 7,
+    pageSize: 50,
     totalUsersCount: 0,
     currentPage: 1,
     isLoading:false,

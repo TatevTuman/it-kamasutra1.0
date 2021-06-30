@@ -6,39 +6,49 @@ let initialState = {
         {title: "Post2", like: "20", id: "2"},
     ],
     newPostText: "Your post . . .",
+
+    oneUserInfo: null,
+
 }
 
 
 const reducerProfile = (state = initialState, action) => {
-/*    let stateCopy = {
-        ...state,
-        MyPostData: [...state.MyPostData]
-    };*/
+
+    /*    let stateCopy = {
+            ...state,
+            MyPostData: [...state.MyPostData]
+        };*/
 
     switch (action.type) {
         case types.ADD_POST:
-    /*        let newPost = {
-                title: state.newPostText,
-                like: "0",
-                id: "3"
-            }
-            stateCopy.MyPostData = [...state.MyPostData]
-            stateCopy.MyPostData.push(newPost)
-            stateCopy.newPostText = "";
-            return stateCopy;*/
+            /*        let newPost = {
+                        title: state.newPostText,
+                        like: "0",
+                        id: "3"
+                    }
+                    stateCopy.MyPostData = [...state.MyPostData]
+                    stateCopy.MyPostData.push(newPost)
+                    stateCopy.newPostText = "";
+                    return stateCopy;*/
             return {
                 ...state,
                 newPostText: "",
-                MyPostData:[...state.MyPostData,{id:3, like:7, title: state.newPostText}]
+                MyPostData: [...state.MyPostData, {id: 3, like: 7, title: state.newPostText}]
             }
 
 
         case types.UPDATE_NEW_POST_TEXT:
-         /*   stateCopy.newPostText = action.textValue;
-            return stateCopy;*/
+            /*   stateCopy.newPostText = action.textValue;
+               return stateCopy;*/
             return {
                 ...state,
                 newPostText: action.textValue
+            }
+
+        case types.SET_ONE_USER_INFO:
+            return {
+                ...state,
+                oneUserInfo: action.oneUInfo
             }
 
         default:
@@ -57,4 +67,8 @@ export const addPostActionCreator = () => {
 }
 export const updateNewPostTextActionCreator = (textValue) => {
     return {type: types.UPDATE_NEW_POST_TEXT, textValue}
+}
+
+export const setOneUserInfoActionCreator = (oneUInfo) => {
+    return {type: types.SET_ONE_USER_INFO, oneUInfo}
 }

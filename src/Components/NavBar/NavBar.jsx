@@ -5,7 +5,7 @@ import logo from '../../Photo/logo.png';
 import s from "./NavBar.module.css"
 
 
-const NavBar = () => {
+const NavBar = (props) => {
     return (
 
         <Container>
@@ -22,12 +22,19 @@ const NavBar = () => {
                     <span><NavLink to="/friends">Friends</NavLink></span>
                     <span><NavLink to="/news">News</NavLink></span>
                 </Col>
+
+
+                <Col className={s.menu}><NavLink to="/login"> {props.isAuth ? props.login : "Login..."}</NavLink></Col>
             </Row>
         </Container>
     )
 }
 
 export default NavBar;
+
+
+
+
 
 
 

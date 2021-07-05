@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {setLoginData} from "../../Redux/auth";
 import * as axios from "axios";
 import NavBar from "./NavBar";
+import {loginAuth} from "../../api/api";
 
 
 class NavBarContainerAPI extends React.Component {
@@ -10,9 +11,11 @@ class NavBarContainerAPI extends React.Component {
 
     componentDidMount() {
 
-        axios.get("https://social-network.samuraijs.com/api/1.0/auth/me", {
-            withCredentials: true
-        }).then(response => {
+        // axios.get("https://social-network.samuraijs.com/api/1.0/auth/me", {
+        //     withCredentials: true
+        // })
+        loginAuth()
+            .then(response => {
             if (response.data.resultCode === 0) {
                 const {id, email, login} = response.data.data;
                 this.props.setLoginData(id, email, login);

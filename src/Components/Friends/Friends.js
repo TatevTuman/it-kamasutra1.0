@@ -3,6 +3,7 @@ import {Button, Col, Container, Row} from "react-bootstrap";
 import s from "./Friends.module.css";
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
+import {followFunc, unFollow} from "../../api/api";
 
 
 const Friends = (props) => {
@@ -21,12 +22,14 @@ const Friends = (props) => {
 
                     <div>{friend.followed
                         ? <Button onClick={()=>{
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${friend.id}`, {
+                      /*      axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${friend.id}`, {
                                 withCredentials:true,
                                 headers:{
                                     "API-KEY":"86b6d55f-9b69-4c48-827b-0eb35e80dd79"
                                 }
-                            })
+                            })*/
+                            const id=friend.id
+                            followFunc(id)
                                 .then(response=>{
                                     if(response.data.resultCode==0){
                                         props.unFollow(friend.id)
@@ -34,12 +37,14 @@ const Friends = (props) => {
                                 });
                         }}>Unfollow</Button> :
                         <Button onClick={()=>{
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${friend.id}`,{},{
+                        /*    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${friend.id}`,{},{
                                 withCredentials:true,
                                 headers:{
                                     "API-KEY":"86b6d55f-9b69-4c48-827b-0eb35e80dd79"
                                 }
-                            })
+                            })*/
+                            const id=friend.id
+                            unFollow(id)
                                 .then(response=>{
                                     if(response.data.resultCode==0){
                                         props.followFriend(friend.id)

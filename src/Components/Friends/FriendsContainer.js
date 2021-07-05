@@ -9,6 +9,7 @@ import {
 import Friends from "./Friends";
 import * as axios from "axios";
 import Spiner from "../Spiner/Spiner";
+import {getUsers} from "../../api/api";
 
 
 class FriendsContainerAPI extends React.Component {
@@ -16,11 +17,13 @@ class FriendsContainerAPI extends React.Component {
     componentDidMount() {
 
         this.props.isToggleLoading(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{
-            withCredentials:true})
-            .then(response => {
-                this.props.setUser(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount)
+      /*  axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{
+            withCredentials:true})*/
+
+        getUsers(this.props.currentPage,this.props.pageSize)
+            .then(data => {
+                this.props.setUser(data.items);
+                this.props.setTotalUsersCount(data.totalCount)
                 this.props.isToggleLoading(false)
             });
     }
@@ -28,10 +31,13 @@ class FriendsContainerAPI extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.isToggleLoading(true)
         this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,{
+      /*  axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,{
             withCredentials:true
-        }).then(response => {
-            this.props.setUser(response.data.items);
+        })*/
+
+        getUsers(pageNumber,this.props.pageSize)
+            .then(data => {
+            this.props.setUser(data.items);
             this.props.isToggleLoading(false)
         });
     }

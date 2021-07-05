@@ -3,35 +3,6 @@ import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../
 import Message from "./Message";
 import {connect} from "react-redux";
 
-
-/*
-const MessageContainer = (props) => {
-
-
-    let addMessageUI = () => {
-        props.dispatch(addMessageActionCreator())
-
-    }
-
-    let onMessageChange = (textValue) => {
-        props.dispatch(updateNewMessageTextActionCreator(textValue))
-
-    }
-
-    return (
-        <div>
-            <Message addMessageUI={addMessageUI}
-                     onMessageChange={onMessageChange}
-                     newMessageText={props.newMessageText}
-                     state={props.state}
-            />
-        </div>
-    )
-}
-
-export default MessageContainer;*/
-
-
 const mapStateToProps = (state) => {
     return {
         state: state.messagePage.MessageData,

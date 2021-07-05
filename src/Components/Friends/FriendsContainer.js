@@ -16,17 +16,21 @@ class FriendsContainerAPI extends React.Component {
     componentDidMount() {
 
         this.props.isToggleLoading(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
-            this.props.setUser(response.data.items);
-            this.props.setTotalUsersCount(response.data.totalCount)
-            this.props.isToggleLoading(false)
-        });
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{
+            withCredentials:true})
+            .then(response => {
+                this.props.setUser(response.data.items);
+                this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.isToggleLoading(false)
+            });
     }
 
     onPageChanged = (pageNumber) => {
         this.props.isToggleLoading(true)
         this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,{
+            withCredentials:true
+        }).then(response => {
             this.props.setUser(response.data.items);
             this.props.isToggleLoading(false)
         });
@@ -35,7 +39,7 @@ class FriendsContainerAPI extends React.Component {
     render() {
         return (
             <div>
-                {this.props.isLoading ? <Spiner/> : <Friends onPageChanged={this.onPageChanged}
+                {this.props.isLoading ? <Spiner/> : <Friends {...this.props} onPageChanged={this.onPageChanged}
                                                              totalUsersCount={this.props.totalUsersCount}
                                                              pageSize={this.props.pageSize}
                                                              currentPage={this.props.currentPage}
@@ -64,7 +68,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        follow: (userId) => {
+        followFriend: (userId) => {
             dispatch(followActionCreator(userId));
         },
         unFollow: (userId) => {
@@ -87,5 +91,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(FriendsContainerAPI);
 
-export default FriendsContainer;
+export default  FriendsContainer;
+
+
+
+
 

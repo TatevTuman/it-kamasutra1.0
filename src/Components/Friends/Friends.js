@@ -2,6 +2,7 @@ import React from "react";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import s from "./Friends.module.css";
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 
 const Friends = (props) => {
@@ -18,13 +19,36 @@ const Friends = (props) => {
                     </NavLink>
 
 
-                    <div><Button onClick={friend.followed ? () => {
-                        this.props.follow(friend.id)
-                    } : () => {
-                        this.props.unFollow(friend.id)
-                    }}>
-                        {friend.followed ? "Unfollow" : "Follow"}
-                    </Button></div>
+                    <div>{friend.followed
+                        ? <Button onClick={()=>{
+                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${friend.id}`, {
+                                withCredentials:true,
+                                headers:{
+                                    "API-KEY":"86b6d55f-9b69-4c48-827b-0eb35e80dd79"
+                                }
+                            })
+                                .then(response=>{
+                                    if(response.data.resultCode==0){
+                                        props.unFollow(friend.id)
+                                    }
+                                });
+                        }}>Unfollow</Button> :
+                        <Button onClick={()=>{
+                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${friend.id}`,{},{
+                                withCredentials:true,
+                                headers:{
+                                    "API-KEY":"86b6d55f-9b69-4c48-827b-0eb35e80dd79"
+                                }
+                            })
+                                .then(response=>{
+                                    if(response.data.resultCode==0){
+                                        props.followFriend(friend.id)
+                                    }
+                                })
+                        }}
+
+                        >Follow</Button>
+                    }</div>
                 </Col>
 
                 <Col>
@@ -75,4 +99,4 @@ const Friends = (props) => {
 }
 
 
-export default Friends;
+export default Friends;;
